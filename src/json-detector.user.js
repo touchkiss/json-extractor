@@ -99,9 +99,10 @@
                     try {
                         const result = parser(haystack);
                         // 过滤空对象或数组
-                        if((typeof result === 'object' && result !== null) && (Object.keys(result).length === 0 || (Array.isArray(result) && result.length === 0))) continue;
-
-                        foundObjects.push(result);
+                        if ((typeof result === 'object' && result !== null) && (Object.keys(result).length === 0 || (Array.isArray(result) && result.length === 0)) || (typeof result === 'string' && result.trim() === '')) {
+                        } else {
+                            foundObjects.push(result);
+                        }
 
                         subjectOffset += startIndex + haystack.length;
 
